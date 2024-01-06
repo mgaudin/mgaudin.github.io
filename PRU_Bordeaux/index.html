@@ -154,6 +154,13 @@ css : https://developers.arcgis.com/javascript/latest/guide/styling/
         ]
       };
 
+      esriConfig.apiKey = "AAPK160da251584640edaecd611dc389ac40pCt-pPG1ZVhR9RCSDmTGjPxKQawYrZS0TETK-_Yk991ajnzx9ZnuAUa3HVe1whnC";
+
+      const constructions_carriet = new FeatureLayer({
+        portalItem: {
+          id: "c7e4c121ebc9491dbf00c49a8fde57b8"
+        }
+      });
 
       var layer = new FeatureLayer({
         //url: "https://services.arcgis.com/d3voDfTFbHOCRwVR/arcgis/rest/services/data_full_covid19/FeatureServer/0",
@@ -164,7 +171,7 @@ css : https://developers.arcgis.com/javascript/latest/guide/styling/
       const map = new Map({
         //basemap: "satellite",
         basemap: "dark-gray",
-        layers: [layer]
+        layers: [layer, constructions_carriet]
       });
 
       const view = new MapView({
