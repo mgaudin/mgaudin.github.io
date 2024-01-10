@@ -269,6 +269,31 @@ css : https://developers.arcgis.com/javascript/latest/guide/styling/
         
       });
 
+      view.whenLayerView(constructions_carriet).then(function (layerView) {
+        timeLayerView = layerView;
+        const fullTimeExtent = constructions_carriet.timeInfo.fullTimeExtent;
+
+        console.log(fullTimeExtent)
+
+        layerView.queryFeatures().then(function(results){
+          // prints an array of all the features in the service to the console
+          console.log(results.features);
+        });
+
+        timeSlider.fullTimeExtent = fullTimeExtent;
+        timeSlider.stops = {
+          interval: {
+            value: 1,
+            unit: "days"
+          },
+          timeExtent: {
+            start: fullTimeExtent.start,//1579564800000,
+            end: fullTimeExtent.end//1584403200000
+          }
+        }
+       
+      });
+
       view.ui.add(timeSlider, "manual");
       
       timeSlider.watch("timeExtent", function(value){
@@ -397,7 +422,7 @@ css : https://developers.arcgis.com/javascript/latest/guide/styling/
       const legend = new Legend({
         view: view,
         layerInfos: [{
-          layer: layer,
+          layer: [layer, constructions_carriet],
           title: "Légende",
         }]
       });
@@ -426,11 +451,14 @@ css : https://developers.arcgis.com/javascript/latest/guide/styling/
   </div>
   
   <div id="source" class="esri-widget" >
-    <div id="titleText">Web app built with <nobr><a style="color:orange;" href="https://developers.arcgis.com/javascript/">ArcGIS API for JavaScript</a></nobr> Source code :<a style="color:orange;" href="https://github.com/Sebastiensz/arcgis-javascript/tree/master/Covid19-spreading">Github</a></p>
-    <p>Data source:
-      <a style="color:orange;" href="https://ourworldindata.org/coronavirus-source-data"> Our World in Data</a>
-    </p> </div>
+    <div id="titleText">
+      <p>Web app built with
+        <nobr><a style="color:orange;" href="https://developers.arcgis.com/javascript/">ArcGIS API for JavaScript</a></nobr>
+        Source code :<a style="color:orange;" href="https://github.com/Sebastiensz/arcgis-javascript/tree/master/Covid19-spreading">Github</a>
+      </p>
+      <p>Auteur : Michaël Gaudin</p>
     </div>
+  </div>
 </body>
 
 </html>
