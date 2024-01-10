@@ -245,7 +245,13 @@ css : https://developers.arcgis.com/javascript/latest/guide/styling/
       const timeSlider = new TimeSlider({
         container: "timeSlider",
         mode: "instant",
-        view: view
+        view: view,
+        fullTimeExtent: { // entire extent of the timeSlider
+          start: new Date(2019, 0, 1),
+          end: new Date(2032, 0, 1)},
+        timeExtent: { // location of timeSlider thumbs
+          start: new Date.now(),
+          end: new Date.now() }
       });
 
       view.ui.add(timeSlider, "manual");
@@ -293,10 +299,10 @@ css : https://developers.arcgis.com/javascript/latest/guide/styling/
         };
       });
 
-      timeSlider.set({
-        loop: false,
-        playRate: 100
-      });
+//      timeSlider.set({
+//        loop: false,
+//        playRate: 100
+//      });
 
       view.ui.remove("zoom");
 
