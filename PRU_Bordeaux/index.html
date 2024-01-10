@@ -247,11 +247,11 @@ css : https://developers.arcgis.com/javascript/latest/guide/styling/
         mode: "instant",
         view: view,
         fullTimeExtent: { // entire extent of the timeSlider
-          start: new Date(2019, 0, 1),
-          end: new Date(2032, 0, 1)},
+          start: start_time = new Date(2019, 0, 1).getTime(),
+          end: end_time = new Date(2032, 0, 1).getTime()},
         timeExtent: { // location of timeSlider thumbs
-          start: new Date(),
-          end: new Date()}
+          start: start_thumb = new Date().getTime(),
+          end: end_thumb = new Date().getTime()}
       });
 
       view.ui.add(timeSlider, "manual");
