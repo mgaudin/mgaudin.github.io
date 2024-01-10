@@ -247,30 +247,33 @@ css : https://developers.arcgis.com/javascript/latest/guide/styling/
         mode: "instant",
         view: view
       });
-      view.ui.add(timeSlider, "manual");
-      let timeLayerView;
-      view.whenLayerView(layer).then(function (lv) {
-        timeLayerView = lv;
-        const fullTimeExtent = layer.timeInfo.fullTimeExtent;
 
-        timeSlider.fullTimeExtent = fullTimeExtent;
-        timeSlider.stops = {
-          interval: {
-            value: 1,
-            unit: "days"
-          },
-          timeExtent: {
-            start: fullTimeExtent.start,//1579564800000,
-            end: fullTimeExtent.end//1584403200000
-          }
-        }
-        
-              //timeSlider.play();
-        
-      });
+      view.ui.add(timeSlider, "manual");
+
+      let timeLayerView;
+
+//      view.whenLayerView(layer).then(function (lv) {
+//        timeLayerView = lv;
+//        const fullTimeExtent = layer.timeInfo.fullTimeExtent;
+//
+//        timeSlider.fullTimeExtent = fullTimeExtent;
+//        timeSlider.stops = {
+//          interval: {
+//            value: 1,
+//            unit: "days"
+//          },
+//          timeExtent: {
+//            start: fullTimeExtent.start,//1579564800000,
+//            end: fullTimeExtent.end//1584403200000
+//          }
+//        }
+//        
+//              //timeSlider.play();
+//        
+//      });
 
       view.whenLayerView(constructions_carriet).then(function (layerView) {
-        timeLayerView = layerView;
+        //timeLayerView = layerView;
         //const fullTimeExtent = constructions_carriet.timeInfo.fullTimeExtent;
 
         //console.log(fullTimeExtent)
